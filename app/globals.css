@@ -10,6 +10,7 @@
   --activity: #252526;
   --footer: #007acc;
   --remote: #3e874f;
+  --inactive: #6b6b6b;
 }
 
 @media (prefers-color-scheme: dark) {

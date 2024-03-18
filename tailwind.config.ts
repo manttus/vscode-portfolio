@@ -16,6 +16,7 @@ const config: Config = {
         activity: "var(--activity)",
         footer: "var(--footer)",
         remote: "var(--remote)",
+        inactive: "var(--inactive)",
       },
       fontSize: {
         status: "0.75rem",

@@ -7,7 +7,7 @@ import ActivityTooltip from "./activty-tooltip";
 
 interface IActivityTile {
   name: string;
-  path: string;
+  callback: () => void;
   status: boolean;
   size?: number;
   tooltip: string;
@@ -15,9 +15,9 @@ interface IActivityTile {
 
 export default function ActivityTile({
   name,
+  callback,
   status,
-  path,
-  size = 26,
+  size = 25,
   tooltip,
 }: IActivityTile) {
   const router = useRouter();
@@ -31,7 +31,7 @@ export default function ActivityTile({
             "border-transparent": !status,
           },
         )}
-        onClick={() => router.push(path)}
+        onClick={callback}
       >
         <SpriteIcon
           className={cn("fill-foreground hover:fill-foreground ", {
@@ -41,7 +41,7 @@ export default function ActivityTile({
           name={name}
           size={size}
         />
-        <ActivityTooltip tooltip={tooltip} />
+        {/* <ActivityTooltip tooltip={tooltip} /> */}
       </div>
     </>
   );

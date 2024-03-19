@@ -5,7 +5,6 @@ interface ISpriteIcon {
 }
 
 export default function SpriteIcon({ name, className, size }: ISpriteIcon) {
-  console.log(className);
   return (
     <>
       <svg width={size} height={size} className={className}>

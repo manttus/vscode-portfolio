@@ -1,6 +1,6 @@
 interface ISpriteIcon {
   name: string;
-  className: string;
+  className?: string;
   size: number;
 }
 

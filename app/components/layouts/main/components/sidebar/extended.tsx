@@ -1,5 +1,4 @@
 import useActivityStore from "@/app/feature/store/useActivityStore";
-import ActivityExplorer from "../atomic/activity-explorer";
 import { Tab } from "@/app/enums/TabEnums";
 import Explorer from "./panels/explorer";
 

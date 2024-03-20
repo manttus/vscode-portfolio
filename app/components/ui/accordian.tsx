@@ -7,7 +7,7 @@ export default function Accordian({
   children,
 }: {
   title: string;
-  children: ReactNode;
+  children?: ReactNode;
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
@@ -26,7 +26,7 @@ export default function Accordian({
           />
           <p>{title}</p>
         </div>
-        {isExpanded && <div className="flex px-2">{children}</div>}
+        {isExpanded && <div className="flex flex-col px-4">{children}</div>}
       </div>
     </>
   );

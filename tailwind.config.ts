@@ -17,6 +17,7 @@ const config: Config = {
         footer: "var(--footer)",
         remote: "var(--remote)",
         inactive: "var(--inactive)",
+        expanded: "var(--expanded)",
       },
       fontSize: {
         status: "0.75rem",

@@ -96,7 +96,7 @@ export default function SidePanel({ children }: { children: ReactNode }) {
           </div>
           {bar.extended && <Extended />}
         </aside>
-        <section className="w-full bg-background">{children}</section>
+        <section className="w-full flex-grow bg-background">{children}</section>
       </main>
     </>
   );

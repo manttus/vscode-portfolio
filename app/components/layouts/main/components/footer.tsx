@@ -17,7 +17,7 @@ export default function Footer() {
             size={14}
             className={"fill-foreground stroke-2"}
           />
-          <p className="pt-[0.1rem]">Raymon*</p>
+          <p>Raymon*</p>
         </div>
       </div>
       <div className="flex h-full items-center px-2 gap-3 cursor-pointer">

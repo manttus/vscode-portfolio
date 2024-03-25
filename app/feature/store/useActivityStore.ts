@@ -8,28 +8,31 @@ interface IActivityState {
 }
 
 interface IActivityAction {
-  setExpanded: (tab: string) => void;
+  setExpanded: (tab: Tab) => void;
 }
 
 const useActivityStore = create<IActivityState & IActivityAction>()(
   persist(
     (set) => ({
-      extended: false,
+      extended: true,
       tab: Tab.EXPLORER,
-      setExpanded: (tab: string) =>
+      setExpanded: (tab: Tab) =>
         set((state) => {
           if (state.extended && state.tab !== tab) {
             return {
+              ...state,
               tab,
             };
           }
           if (!state.extended && state.tab !== tab) {
             return {
+              ...state,
               extended: !state.extended,
               tab,
             };
           }
           return {
+            ...state,
             extended: !state.extended,
           };
         }),

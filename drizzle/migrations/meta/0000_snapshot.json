@@ -1,5 +1,5 @@
 {
-  "id": "0c1b00b0-98ad-4f5c-b949-7e036e68fc5b",
+  "id": "1a01c638-8879-4fa8-9164-048382d0f617",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -11,19 +11,45 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": false,
-          "notNull": false,
+          "primaryKey": true,
+          "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "filename": {
-          "name": "filename",
+        "name": {
+          "name": "name",
           "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "type": {
+          "name": "type",
+          "type": "type",
           "primaryKey": false,
           "notNull": false
         },
         "extension": {
           "name": "extension",
           "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "icon": {
+          "name": "icon",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "' '"
+        },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "' '"
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": false
         }
@@ -34,7 +60,16 @@
       "uniqueConstraints": {}
     }
   },
-  "enums": {},
+  "enums": {
+    "type": {
+      "name": "type",
+      "values": {
+        "folder": "folder",
+        "file": "file",
+        "image": "image"
+      }
+    }
+  },
   "schemas": {},
   "_meta": {
     "columns": {},

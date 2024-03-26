@@ -17,14 +17,14 @@ export default function TabBar() {
             className={cn(
               "flex gap-1 items-center border-none text-[0.65rem] text-foreground px-2 cursor-pointer",
               {
-                "bg-background": current === tab.id,
-                "bg-bar": current !== tab.id,
+                "bg-background": current.id === tab.id,
+                "bg-bar": current.id !== tab.id,
               },
             )}
           >
             <div
               className="flex items-center gap-1"
-              onClick={() => active(tab.id)}
+              onClick={() => active(tab.id, tab.content)}
             >
               <SpriteIcon name={tab.name} size={10} />
               {tab.title}

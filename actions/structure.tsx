@@ -2,10 +2,16 @@
 
 import { db } from "@/drizzle";
 import { structure } from "@/drizzle/schema";
-import { eq } from "drizzle-orm";
+import { and, asc, eq, isNull, ne } from "drizzle-orm";
 
 export async function getStruture() {
-  return await db.select().from(structure);
+  return await db.query.structure.findMany({
+    where: isNull(structure.parent_id),
+    with: {
+      children: true,
+    },
+    orderBy: and(asc(structure.name)),
+  });
 }
 
 interface IStructure {

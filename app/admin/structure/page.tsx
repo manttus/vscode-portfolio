@@ -1,25 +1,28 @@
 "use client";
 
-import { removeStructure, setStructure } from "@/actions/structure";
+import { useForm } from "react-hook-form";
 
 export default function Structure() {
-  async function insertStructure() {
-    await setStructure({
-      extension: ".json",
-      filename: "_user",
-    });
+  interface IStructure {
+    filename: string;
+    extension: string;
+  }
+  async function submitHandler(data: IStructure) {
+    alert(JSON.stringify(data));
   }
 
-  async function deleteStructure(id: number) {
-    const response = await removeStructure(id);
-    console.log(response);
-  }
+  const { handleSubmit } = useForm<IStructure>({
+    defaultValues: {
+      filename: "",
+      extension: "",
+    },
+  });
 
   return (
     <div className="flex h-screen w-full flex-col justify-center items-center">
-      <div className="flex w-9/12">
-        <button onClick={() => insertStructure()}>Insert</button>
-      </div>
+      <form className="flex flex-col" onSubmit={handleSubmit(submitHandler)}>
+        <button>Submit</button>
+      </form>
     </div>
   );
 }

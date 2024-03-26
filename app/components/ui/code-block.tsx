@@ -4,9 +4,10 @@ import { atomOneDarkReasonable } from "react-syntax-highlighter/dist/esm/styles/
 interface ICodeBlock {
   text: string;
   showLine?: boolean;
+  content: string;
 }
 
-const CodeBlock = ({ text, showLine = false }: ICodeBlock) => {
+const CodeBlock = ({ text, showLine = false, content = " " }: ICodeBlock) => {
   const snippet = `
     {
       "name": "Raymon Bikram Basnyat",
@@ -31,7 +32,7 @@ const CodeBlock = ({ text, showLine = false }: ICodeBlock) => {
       }}
       style={atomOneDarkReasonable}
     >
-      {snippet.replace("\n", "")}
+      {content.replace("\n", "")}
     </SyntaxHighlighter>
   );
 };

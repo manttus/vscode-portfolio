@@ -13,7 +13,7 @@ export default function Home() {
       return (
         <div className="flex flex-grow justify-center items-center">
           <div className="flex w-3/4 h-3/4 justify-center relative items-center">
-            <Image src={current.content} fill priority />
+            <Image src={current.content} style={{objectFit: "contain"}} fill priority />
           </div>
         </div>
       );

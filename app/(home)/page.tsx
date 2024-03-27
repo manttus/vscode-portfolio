@@ -12,8 +12,8 @@ export default function Home() {
     if (current.content.includes("https")) {
       return (
         <div className="flex flex-grow justify-center items-center">
-          <div className="flex justify-center items-center">
-            <Image src={current.content} height={600} width={600} priority />
+          <div className="flex w-3/4 h-3/4 justify-center relative items-center">
+            <Image src={current.content} fill priority />
           </div>
         </div>
       );

@@ -2,13 +2,17 @@
 
 import { db } from "@/drizzle";
 import { structure } from "@/drizzle/schema";
-import { and, asc, eq, isNull, ne } from "drizzle-orm";
+import { and, asc, eq, isNull, like, sql, ne } from "drizzle-orm";
 
 export async function getStruture() {
   return await db.query.structure.findMany({
     where: isNull(structure.parent_id),
     with: {
-      children: true,
+      children: {
+        with: {
+          children: true,
+        },
+      },
     },
     orderBy: and(asc(structure.name)),
   });
@@ -17,6 +21,15 @@ export async function getStruture() {
 interface IStructure {
   filename: string;
   extension: string;
+}
+
+export async function searchStructure(term: string) {
+  return await await db
+    .select()
+    .from(structure)
+    .where(
+      and(like(structure.name, `%${term}%`), ne(structure.type, "folder")),
+    );
 }
 
 export async function setStructure(payload: IStructure) {

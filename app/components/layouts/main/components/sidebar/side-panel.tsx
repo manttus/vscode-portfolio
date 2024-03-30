@@ -44,25 +44,36 @@ export default function SidePanel({ children }: { children: ReactNode }) {
       },
       tooltip: "Github",
     },
+    {
+      id: uuidv4(),
+      icon: "extension",
+      alt: "Github Icon",
+      active: active(Tab.GITHUB),
+      callback: () => {},
+      tooltip: "Projects",
+    },
   ];
 
   const activity_bottom = [
     {
       id: uuidv4(),
+      icon: "message",
+      alt: "Setting Icon",
+      active: active(Tab.SETTING),
+      callback: () => {
+        bar.setExpanded(Tab.SETTING);
+      },
+      tooltip: "Settings",
+    },
+    {
+      id: uuidv4(),
       icon: "profile",
       alt: "Profile Icon",
       active: active(Tab.PROFILE),
-      callback: () => {},
+      callback: () => {
+        bar.setExpanded(Tab.PROFILE);
+      },
       tooltip: "Profile",
-    },
-
-    {
-      id: uuidv4(),
-      icon: "setting",
-      alt: "Setting Icon",
-      active: active(Tab.SETTING),
-      callback: () => {},
-      tooltip: "Settings",
     },
   ];
 

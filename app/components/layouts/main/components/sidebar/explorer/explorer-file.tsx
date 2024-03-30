@@ -8,6 +8,7 @@ interface IExplorerFileProps {
   name: string;
   extension: string;
   content: string;
+  type: string;
 }
 export default function ExplorerFile({
   id,
@@ -15,6 +16,7 @@ export default function ExplorerFile({
   name,
   extension,
   content,
+  type,
 }: IExplorerFileProps) {
   const { open } = useTabStore();
 
@@ -25,7 +27,7 @@ export default function ExplorerFile({
           className={cn(
             "flex w-full cursor-pointer pb-1 items-center gap-1 px-3",
           )}
-          onClick={() => open({ id, title, name, extension, content })}
+          onClick={() => open({ id, title, name, extension, content, type })}
         >
           <SpriteIcon name={name} size={10} className="fill-foreground" />
           <p>

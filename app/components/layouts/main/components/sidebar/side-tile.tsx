@@ -1,5 +1,6 @@
 import SpriteIcon from "@/app/components/common/icon/sprites_icon";
 import { cn } from "@/app/components/lib/utils";
+import ActivityTooltip from "./side-tooltip";
 
 interface IActivityTile {
   name: string;
@@ -36,7 +37,7 @@ export default function SideTile({
           name={name}
           size={size}
         />
-        {/* <ActivityTooltip tooltip={tooltip} /> */}
+        <ActivityTooltip tooltip={tooltip} />
       </div>
     </>
   );

@@ -15,7 +15,7 @@ export default function Accordian({
       <div className="flex flex-col text-[0.65rem] text-foreground  transition ease-in-out duration-300">
         <div
           className={cn(
-            "flex w-full cursor-pointer pb-1 items-center gap-1 px-3",
+            "flex w-full cursor-pointer pb-1 items-center gap-1 px-2",
           )}
           onClick={() => setIsExpanded((prev) => !prev)}
         >
@@ -26,7 +26,7 @@ export default function Accordian({
           />
           <p>{title}</p>
         </div>
-        {isExpanded && <div className="flex flex-col px-4">{children}</div>}
+        {isExpanded && <div className="flex flex-col px-1">{children}</div>}
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { atomOneDarkReasonable } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import Markdown from "react-markdown";
 
 interface ICodeBlock {
   text: string;
@@ -8,32 +9,34 @@ interface ICodeBlock {
 }
 
 const CodeBlock = ({ text, showLine = false, content = " " }: ICodeBlock) => {
-  const snippet = `
-    {
-      "name": "Raymon Bikram Basnyat",
-      "age": 23,
-      "address": {
-        "city": "Kathmandu",
-        "address": "Dhumbarai",
-        "postal": 44600,
-      },
-      "socials": {
-        "linkedin": "https://www.linkedin.com/in/raymon-basnyat-281382222/"
-      }
-    }`;
-
   return (
-    <SyntaxHighlighter
-      language="typescript"
-      showLineNumbers={showLine}
-      customStyle={{
-        background: "1e1e1e",
-        fontSize: text,
+    <Markdown
+      components={{
+        code({ node, inline, className, children, ...props }: any) {
+          const match = /language-(\w+)/.exec(className || "");
+
+          return !inline && match ? (
+            <SyntaxHighlighter
+              style={atomOneDarkReasonable}
+              language={match[1]}
+              showLineNumbers={showLine}
+              customStyle={{
+                background: "1e1e1e",
+                fontSize: text,
+              }}
+              children={String(children).replace(/\n$/, "")}
+              {...props}
+            />
+          ) : (
+            <code className={className ? className : ""} {...props}>
+              {children}
+            </code>
+          );
+        },
       }}
-      style={atomOneDarkReasonable}
     >
-      {content.replace("\n", "")}
-    </SyntaxHighlighter>
+      {content}
+    </Markdown>
   );
 };
 

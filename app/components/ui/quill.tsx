@@ -1,14 +1,32 @@
-import ReactQuill from "react-quill";
+"use client";
+
+import dynamic from "next/dynamic";
+import { useMemo } from "react";
+
 import "react-quill/dist/quill.snow.css";
 
-export default function Quill() {
-  const modules = {
-    toolbar: [["code", "image"]],
-  };
+const modules = {
+  toolbar: [["bold", "image", "code"]],
+};
 
-  const formats = ["code", "image"];
+const formats = ["bold", "code", "image"];
+
+function Quill(props: { value: string; handler: (value: string) => void }) {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }),
+    [],
+  );
 
   return (
-    <ReactQuill className="w-full h-60" modules={modules} formats={formats} />
+    <div className="h-20">
+      <ReactQuill
+        value={props.value}
+        onChange={(data) => props.handler(data)}
+        modules={modules}
+        formats={formats}
+      />
+    </div>
   );
 }
+
+export default Quill

@@ -1,16 +1,8 @@
 import { searchStructure } from "@/actions/structure";
 import SpriteIcon from "@/app/components/common/icon/sprites_icon";
-import { TextField } from "@/app/components/form/form-elements";
-import useDebounce from "@/app/hooks/useDebounce";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import useSWR, { mutate } from "swr";
 import ExplorerFile from "../explorer/explorer-file";
-
-interface SearchTerm {
-  term: string;
-}
 
 export default function Search() {
   const [search, setSearch] = useState<string>("");
@@ -39,24 +31,26 @@ export default function Search() {
         </div>
         <div className="w-full px-2 pb-2">
           <input
-            className="w-full h-6 px-1 bg-bar ring-footer focus:ring-1 focus:outline-none text-foreground text-[0.60rem]"
+            className="w-full h-6 px-1 bg-bar ring-footer focus:ring-1 focus:outline-none text-foreground text-[0.65rem]"
             placeholder="Search (for files)"
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
         <div className="flex flex-col px-2 gap-2">
-          <p className="text-foreground text-[0.60rem]">{`${data ? data.length : 0} results`}</p>
+          <p className="text-foreground text-[0.65rem]">{`${
+            data ? data.length : 0
+          } results`}</p>
           <div>
             {!isLoading &&
-              data.map((item) => {
+              data!.map((item) => {
                 return (
                   <ExplorerFile
-                    id={item.id}
-                    name={item.icon}
-                    type={item.type}
-                    title={item.name}
-                    content={item.content}
-                    extension={item.extension}
+                    id={item.id!}
+                    name={item.icon!}
+                    type={item.type!}
+                    title={item.name!}
+                    content={item.content!}
+                    extension={item.extension!}
                   />
                 );
               })}

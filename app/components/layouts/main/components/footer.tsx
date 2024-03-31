@@ -20,13 +20,7 @@ export default function Footer() {
           <p>Raymon*</p>
         </div>
       </div>
-      <div className="flex h-full items-center px-2 gap-3 cursor-pointer">
-        <SpriteIcon
-          size={12}
-          name="notification"
-          className={"fill-foreground stroke-2"}
-        />
-      </div>
+      <div className="flex h-full items-center px-2 gap-3 cursor-pointer"></div>
     </footer>
   );
 }

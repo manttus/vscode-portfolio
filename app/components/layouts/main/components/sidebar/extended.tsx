@@ -10,7 +10,7 @@ function switcher(tab: Tab) {
       return <Explorer />;
     }
     case Tab.SEARCH: {
-      return <Search/>
+      return <Search />;
     }
     case Tab.SETTING: {
       return <Settings />;
@@ -22,7 +22,7 @@ export default function Extended() {
   const activityBar = useActivityStore();
   return (
     <>
-      <div className="flex justify-center flex-grow w-52 bg-expanded">
+      <div className="justify-center w-52 bg-expanded">
         {switcher(activityBar.tab)}
       </div>
     </>

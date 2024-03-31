@@ -2,11 +2,7 @@
 
 import { sendEmail } from "@/actions/email";
 import SpriteIcon from "@/app/components/common/icon/sprites_icon";
-import {
-  SelectField,
-  TextArea,
-  TextField,
-} from "@/app/components/form/form-elements";
+import { TextArea, TextField } from "@/app/components/form/form-elements";
 import useToast from "@/app/hooks/useToast";
 import { useForm } from "react-hook-form";
 
@@ -18,7 +14,7 @@ interface FormFields {
 }
 
 export default function SettingsForm() {
-  const { success, error, info } = useToast();
+  const { success, error } = useToast();
 
   async function handleSubmit(data: FormFields) {
     if (!data.honey) {
@@ -96,7 +92,6 @@ export default function SettingsForm() {
               control={form.control}
               name="message"
               placeholder="How are you my friend"
-
             />
             <TextField
               className="hidden"

@@ -1,18 +1,17 @@
 import SpriteIcon from "@/app/components/common/icon/sprites_icon";
 import Accordian from "@/app/components/ui/accordian";
 import ExplorerFile from "./explorer-file";
-import useSWR from "swr";
 import { getStruture } from "@/actions/structure";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Explorer() {
-  const { data, isLoading, error } = useSWR("/", getStruture);
+  const { data, isLoading } = useQuery({
+    queryKey: ["structure"],
+    queryFn: () => getStruture(),
+  });
 
   if (isLoading) {
     return <></>;
-  }
-
-  if (error) {
-    return <>error</>;
   }
 
   interface ITreeStructure {
@@ -51,7 +50,7 @@ export default function Explorer() {
 
   return (
     <>
-      <div className="flex flex-col w-full">
+      <div className="h-full w-full">
         <div className="flex w-full h-8 justify-between items-center text-[0.60rem] text-foreground py-2 px-2">
           <p>EXPLORER</p>
           <SpriteIcon

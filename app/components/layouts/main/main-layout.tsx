@@ -11,7 +11,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
   const tabStore = useTabStore();
   return (
     <>
-      <div className="flex flex-col h-screen w-screen bg-background">
+      <div className="h-screen flex flex-col no-scrollbar bg-background">
         <StatusBar />
         <SidePanel>
           {tabStore.tabs.length !== 0 && <TabBar />}

@@ -28,7 +28,7 @@ export default function Home() {
       case "file": {
         return (
           <>
-            <div className="flex-grow">
+            <div className="flex w-full  justify-between overflow-y-scroll no-scrollbar">
               <CodeBlock
                 text="0.75rem"
                 content={current.content ? current.content : ""}
@@ -48,8 +48,10 @@ export default function Home() {
   }
 
   return (
-    <main className="flex h-full">
-      {tabs.length > 0 && tabContent()}
+    <main className="flex w-full h-full justify-center">
+      {tabs.length > 0 && (
+        <div className="flex w-full h-[40rem]">{tabContent()}</div>
+      )}
       {tabs.length === 0 && (
         <div className="flex w-full flex-grow justify-center items-center">
           <SpriteIcon name="vscode" size={200} className="fill-[#121212]" />

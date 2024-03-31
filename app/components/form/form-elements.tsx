@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Controller, FieldValues } from "react-hook-form";
 import Quill from "@/app/components/ui/quill";
-import Select from "react-select";
 import { FieldProps } from "@/app/interfaces/elements";
 
 export function TextField<T extends FieldValues>(
@@ -51,9 +50,14 @@ export function SelectField<T extends FieldValues>(
       name={props.name}
       control={props.control}
       render={({ field }) => (
-        <select className={props.className}>
+        <select className={props.className} {...field}>
+          <option value={""}>Select Heirarchy</option>
           {props.options?.map((item) => (
-            <option value={item.value} className={props.className}>
+            <option
+              key={item.value}
+              value={item.value}
+              className={props.className}
+            >
               {item.label}
             </option>
           ))}

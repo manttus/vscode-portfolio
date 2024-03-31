@@ -17,7 +17,6 @@ export async function sendEmail(payload: {
     html: `<p>${payload.message} from ${payload.name} </p>`,
   });
   if (error) {
-    console.log(err);
     return { message: "Failed to Send", status: 400 };
   }
   return { message: "Message Sent", status: 200 };

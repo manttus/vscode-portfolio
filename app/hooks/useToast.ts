@@ -1,9 +1,9 @@
-import {  toast, ToastOptions } from "react-toastify";
+import { toast, ToastOptions } from "react-toastify";
 
 export default function useToast() {
   const props: ToastOptions = {
     position: "bottom-right",
-    autoClose: 2000,
+    autoClose: 3000,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
@@ -21,13 +21,13 @@ export default function useToast() {
     toast.success(message, props);
   }
 
-  function error(message: string){
-    toast.error(message, props)
+  function error(message: string) {
+    toast.error(message, props);
   }
 
-  function info(message: string){
-    toast.info(message, props)
+  function info(message: string) {
+    toast.info(message, props);
   }
 
-  return {success,error, info};
+  return { success, error, info };
 }

@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <main className="flex w-full h-full justify-center">
       {tabs.length > 0 && (
-        <div className="flex w-full h-[40rem]">{tabContent()}</div>
+        <div className="flex w-full overflow-y-auto">{tabContent()}</div>
       )}
       {tabs.length === 0 && (
         <div className="flex w-full flex-grow justify-center items-center">
